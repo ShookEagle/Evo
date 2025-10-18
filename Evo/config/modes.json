@@ -1,0 +1,23 @@
+{
+  "100traps":   { "name": "100 Traps",       "file": "100traps",      "tags": ["mg","minigames","course","kz","race"],         "mapgroup": "mg_course" },
+  "1v1":        { "name": "1v1",             "file": "1v1",           "tags": ["1v1","1vs1","1","warmup"],                     "mapgroup": "mg_1v1" },
+  "armsrace":   { "name": "Arms Race",       "file": "armsrace",      "tags": ["ar","arms","armsrace"],                        "mapgroup": "mg_gg" },
+  "awp":        { "name": "AWP Only",        "file": "awp",           "tags": ["awp","bhop","only"],                           "mapgroup": "mg_awp" },
+  "bhop":       { "name": "Bhop",            "file": "bhop",          "tags": ["bhop","hop","bunny","autohop"],                "mapgroup": "mg_bhop" },
+  "combatsurf": { "name": "Combat Surf",     "file": "combatsurf",    "tags": ["surf","combat","awp","bhop"],                  "mapgroup": "mg_csurf" },
+  "course":     { "name": "Course",          "file": "course",        "tags": ["mg","minigames","course","kz","race"],         "mapgroup": "mg_course" },
+  "deathmatch": { "name": "Deathmatch",      "file": "deathmatch",    "tags": ["dm","deathmatch"],                             "mapgroup": "mg_dm" },
+  "deathrun":   { "name": "Deathrun",        "file": "deathrun",      "tags": ["deahtrun","minigames","mg","course"],          "mapgroup": "mg_deathrun" },
+  "executes":   { "name": "Executes",        "file": "executes",      "tags": ["executes","warmups","comp"],                   "mapgroup": "mg_comp" },
+  "gungame":    { "name": "Gun Game",        "file": "gungame",       "tags": ["gg","gungame"],                                "mapgroup": "mg_gg" },
+  "hideandseek":{ "name": "Hide and Seek",   "file": "hideandseek",   "tags": ["hns","hide","seek","tag"],                     "mapgroup": "mg_hns" },
+  "kzg":        { "name": "KZ",              "file": "kzg",           "tags": ["kz","kreedz","climb"],                         "mapgroup": "mg_kz" },
+  "minigames":  { "name": "Minigames",       "file": "minigames",     "tags": ["mg","minigames","course","kz","race"],         "mapgroup": "mg_mg" },
+  "mirrormadness": { "name": "Mirror Madness","file": "mirrormadness","tags": ["mirror","comp"],                               "mapgroup": "mg_mirror" },
+  "onlyup":     { "name": "Only Up!",        "file": "onlyup",        "tags": ["kz","climb","onlyup","course","race"],         "mapgroup": "mg_kz" },
+  "retakes":    { "name": "Retakes",         "file": "retakes",       "tags": ["retakes","warmups","comp"],                    "mapgroup": "mg_comp" },
+  "scoutzknivez": { "name": "Scoutz Knivez", "file": "scoutzknivez",  "tags": ["flying","scoutz","scout","knife","knivez"],    "mapgroup": "mg_sk" },
+  "scrims":     { "name": "Scrims",          "file": "scrims",        "tags": ["scrims","comp","pugs"],                        "mapgroup": "mg_comp" },
+  "surf":       { "name": "Surf",            "file": "surf",          "tags": ["surf"],                                        "mapgroup": "mg_surf" },
+  "tag":        { "name": "Tag",             "file": "tag",           "tags": ["tag","hns","seek","kz"],                       "mapgroup": "mg_tag" }
+}

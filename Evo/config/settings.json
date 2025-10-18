@@ -1,0 +1,8 @@
+{
+  "alltalk":          { "name": "All Talk",            "stem": "alltalk",          "default": true },
+  "bhop":             { "name": "Auto Bhop",          "stem": "bhop",             "default": false },
+  "bots":             { "name": "Bots",               "stem": "bots",             "default": false },
+  "buying":           { "name": "Buy Menu",           "stem": "buying",           "default": true },
+  "movementunlocker": { "name": "Movement Unlocker",  "stem": "movementunlocker", "default": false },
+  "weapondropping":   { "name": "Weapon Dropping",    "stem": "weapondropping",   "default": true }
+}

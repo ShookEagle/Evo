@@ -23,6 +23,8 @@ public class Evo : BasePlugin, IEvo {
 
   private IAnnouncerService? announcerService;
   private IModeService? modeService;
+  private IMapService? mapService;
+  private ISettingService? settingService;
 
 #pragma warning disable CS8766 // Nullability of reference types in return type doesn't match implicitly implemented member (possibly because of nullability attributes).
   public EvoConfig? Config { get; set; }
@@ -34,10 +36,14 @@ public class Evo : BasePlugin, IEvo {
   public IActain GetActain() { return ActainCapability!.Get()!; }
   public IAnnouncerService GetAnnouncer() { return announcerService!; }
   public IModeService GetModeService() { return modeService!; }
+  public IMapService GetMapService() { return mapService!; }
+  public ISettingService GetSettingService() { return settingService!; }
 
   public override void Load(bool hotReload) {
     announcerService = new AnnouncerService(this);
     modeService      = new ModeService(this);
+    mapService       = new MapService(this);
+    settingService   = new SettingService(this);
 
     loadCommands();
   }

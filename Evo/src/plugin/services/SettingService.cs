@@ -1,9 +1,10 @@
 ﻿using Evo.api.plugin;
+using Evo.api.plugin.services;
 using Evo.plugin.models;
 
 namespace Evo.plugin.services;
 
-public class SettingService {
+public class SettingService : ISettingService {
   private readonly Dictionary<string, Setting> byKey;
   public IReadOnlyDictionary<string, Setting> All => byKey;
 

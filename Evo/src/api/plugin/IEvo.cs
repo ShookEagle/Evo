@@ -10,4 +10,6 @@ public interface IEvo : IPluginConfig<EvoConfig> {
   IActain GetActain();
   IAnnouncerService GetAnnouncer();
   IModeService GetModeService();
+  IMapService GetMapService();
+  ISettingService GetSettingService();
 }

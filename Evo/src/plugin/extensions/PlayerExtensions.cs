@@ -12,7 +12,7 @@ public static class PlayerExtensions {
     if (controller == null || !controller.IsReal()) return;
     string message = localizer[local, args];
     message = message.Replace("%prefix%", localizer["prefix"]);
-    message = StringUtils.replaceChatColors(message);
+    message = StringUtils.ReplaceChatColors(message);
     controller.PrintToChat(message);
   }
 

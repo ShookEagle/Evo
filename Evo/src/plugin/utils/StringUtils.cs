@@ -14,7 +14,7 @@ internal class StringUtils {
      .ForEach(c => STRINGS_TO_REMOVE.Add($"{{{c}}}"));
   }
 
-  internal static string replaceChatColors(string message) {
+  public static string ReplaceChatColors(string message) {
     if (!message.Contains('{')) return message;
     var modifiedValue = message;
     foreach (var field in typeof(ChatColors).GetFields()) {

@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using CounterStrikeSharp.API;
+﻿using CounterStrikeSharp.API;
 using Evo.api.plugin;
 using Evo.api.plugin.services;
 using Evo.plugin.models;

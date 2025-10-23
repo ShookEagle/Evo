@@ -24,7 +24,7 @@ public class EcMenu : MenuBase {
       if (menu.SelectedItem == null) return;
       switch (menu.SelectedItem.Index) {
         case 0: //Modes
-          Menu.Display(menu.Player, new EcMenu(evo), true);
+          Menu.Display(menu.Player, new ModesMenu(evo), true);
           break;
         case 1: //Maps
           Menu.Display(menu.Player, new EcMenu(evo), true);

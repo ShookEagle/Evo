@@ -28,13 +28,13 @@ public abstract class ListMenuBase : MenuBase {
     var item = menu.SelectedItem.Item;
 
     // Prefer MenuItem.Data; fall back to selected value’s data/text
-    var data  = item.Data ?? item.SelectedValue?.Value?.Data ?? item.SelectedValue?.Value?.Text;
+    var data = item.Data;
 
-    OnSelected(idx, data, item, menu);
+    OnSelected(data);
   }
 
   /// <summary>
   /// Child overrides this to implement per-selection logic.
   /// </summary>
-  abstract protected void OnSelected(int index, object? data, MenuItem item, MenuBase menu);
+  abstract protected void OnSelected(object? data);
 }

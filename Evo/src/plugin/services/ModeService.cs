@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using CounterStrikeSharp.API;
 using Evo.api.plugin;
 using Evo.api.plugin.services;
 using Evo.plugin.models;
@@ -6,12 +7,16 @@ using Evo.plugin.models;
 namespace Evo.plugin.services;
 
 public class ModeService : IModeService {
+  private readonly IEvo evo;
+
   private readonly Dictionary<string, Mode> byId;
   private readonly Dictionary<string, string> aliasToId; // alias/tag -> modeId
 
   public IReadOnlyDictionary<string, Mode> All => byId;
 
   public ModeService(IEvo evo) {
+    this.evo = evo;
+
     var path = evo.Config.ModesJsonPath ?? "modes.json";
     byId = JsonCfg.Load<Dictionary<string, Mode>>(path);
     aliasToId =
@@ -32,4 +37,23 @@ public class ModeService : IModeService {
 
   public string GetGroup(string modeId)
     => byId[modeId].Mapgroup; // throws if bad id
+
+  public bool TrySetMode(string alias) {
+    if (!TryResolve(alias, out var mode)) return false;
+    if (!TryGet(mode, out var def)) return false;
+
+    Server.ExecuteCommand("exec \"utils/unload_plugins.cfg\"");
+
+    //Set Map Group
+
+    Server.ExecuteCommand(
+      $"hostname \"=(eGO)= | EVENTS | {def.Name.ToUpper()} | EdgeGamers.com\"");
+    Server.ExecuteCommand(
+      $"sv_tags events, ego, {string.Join(", ", def.Tags.ToArray())}");
+
+    Server.ExecuteCommand($"exec modes/{def.File}.cfg");
+    Server.ExecuteCommand("mp_restartgame 1");
+
+    return true;
+  }
 }

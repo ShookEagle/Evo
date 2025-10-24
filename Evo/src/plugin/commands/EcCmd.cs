@@ -13,11 +13,11 @@ public class EcCmd(IEvo evo) : Command(evo) {
     CommandInfo info) {
     if (!executor.IsReal() || executor == null) return;
 
-    if (executor.GetRank() < MaulPermission.Manager) {
+    /*if (executor.GetRank() < MaulPermission.Manager) {
       info.ReplyLocalized(Plugin.GetBase().Localizer, "no_permission",
         "Manager", "rank");
       return;
-    }
+    }*/ //TODO: Readd MAUL PERMS
     
     Menu.Display(executor, new EcMenu(Plugin));
   }

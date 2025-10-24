@@ -9,7 +9,7 @@ public class SettingService : ISettingService {
   public IReadOnlyDictionary<string, Setting> All => byKey;
 
   public SettingService(IEvo evo) {
-    var path = evo.Config.SettingsJsonPath ?? "settings.json";
+    var path = $"{evo.GetBase().ModulePath}/../{evo.Config.SettingsJsonPath}";
     byKey = JsonCfg.Load<Dictionary<string, Setting>>(path);
   }
 

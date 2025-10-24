@@ -9,7 +9,7 @@ public class MapService : IMapService {
   public IReadOnlyDictionary<string, MapGroup> Groups => groups;
 
   public MapService(IEvo evo) {
-    var path = evo.Config.MapsJsonPath ?? "maps.json";
+    var path = $"{evo.GetBase().ModulePath}/../{evo.Config.MapsJsonPath}";
     groups = JsonCfg.Load<Dictionary<string, MapGroup>>(path);
   }
 

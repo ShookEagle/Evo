@@ -31,15 +31,15 @@
     </ItemGroup>
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Copy SourceFiles="$(TargetPath)"
-              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\EventsManager\" />
+              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\Evo\" />
         <Copy SourceFiles="$(ProjectDir)lang\en.json"
-              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\EventsManager\lang\" />
+              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\Evo\lang\" />
         <Copy SourceFiles="$(ProjectDir)config\maps.json"
-              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\EventsManager\config\" />
+              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\Evo\config\" />
         <Copy SourceFiles="$(ProjectDir)config\modes.json"
-              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\EventsManager\config\" />
+              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\Evo\config\" />
         <Copy SourceFiles="$(ProjectDir)config\settings.json"
-              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\EventsManager\config\" />
+              DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\Evo\config\" />
     </Target>
 
 </Project>

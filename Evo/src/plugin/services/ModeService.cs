@@ -16,7 +16,7 @@ public class ModeService : IModeService {
   public ModeService(IEvo evo) {
     this.evo = evo;
 
-    var path = evo.Config.ModesJsonPath ?? "modes.json";
+    var path = $"{evo.GetBase().ModulePath}/../{evo.Config.ModesJsonPath}";
     byId = JsonCfg.Load<Dictionary<string, Mode>>(path);
     aliasToId =
       new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);

@@ -49,7 +49,7 @@ public class Evo : BasePlugin, IEvo {
   }
 
   private void loadCommands() {
-    //commands.Add("css_ec", );
+    commands.Add("css_ec", new EcCmd(this));
 
     foreach (var command in commands)
       AddCommand(command.Key,

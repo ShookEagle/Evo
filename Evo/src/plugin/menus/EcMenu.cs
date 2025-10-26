@@ -1,6 +1,7 @@
 ﻿using CounterStrikeSharp.API;
 using Evo.api.plugin;
 using Evo.plugin.menus.models;
+using Evo.plugin.menus.theme;
 using RMenu;
 using RMenu.Enums;
 
@@ -13,7 +14,8 @@ public class EcMenu(IEvo evo) : EvoMenuBase("EC Menu") {
       new MenuItem(MenuItemType.Button, new MenuValue("Maps")),
       new MenuItem(MenuItemType.Button, new MenuValue("Settings")),
       new MenuItem(MenuItemType.Button, new MenuValue("Tools")),
-      new MenuItem(MenuItemType.Button, new MenuValue("Reset")),
+      new MenuItem(MenuItemType.Button,
+        new MenuValue("Reset", Theme.ACCENT_RED.ToMenuFormat())),
     ]);
   }
 
@@ -24,7 +26,8 @@ public class EcMenu(IEvo evo) : EvoMenuBase("EC Menu") {
       case 0:
         new ModesMenu(evo).Show(Player, true);
         break;
-      case 1: new MapsMenu(evo).Show(Player, true);
+      case 1:
+        new MapsMenu(evo).Show(Player, true);
         break;
       /*case 2: new EcMenu(evo).Show(Player, true);
         break;

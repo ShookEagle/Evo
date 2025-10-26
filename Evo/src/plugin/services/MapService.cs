@@ -6,22 +6,19 @@ namespace Evo.plugin.services;
 
 public class MapService : IMapService {
   private readonly Dictionary<string, MapGroup> groups;
-  public IReadOnlyDictionary<string, MapGroup> Groups => groups;
+  private string currentGroup;
 
   public MapService(IEvo evo) {
     var path = $"{evo.GetBase().ModulePath}/../{evo.Config.MapsJsonPath}";
     groups = JsonCfg.Load<Dictionary<string, MapGroup>>(path);
+    currentGroup = "mg_active";
   }
-
-  public bool TryGetGroup(string key, out MapGroup group)
-    => groups.TryGetValue(key, out group!);
-
-  // Ordered by numeric keys "1","2","3",…
-  public IReadOnlyList<(string Map, string? WorkshopId)> GetRotation(
-    string groupKey) {
-    var g = groups[groupKey];
-    return g.Maps.OrderBy(kv => int.Parse(kv.Key))
-     .Select(kv => (kv.Value.Name, kv.Value.Id))
-     .ToList();
+  
+  public Dictionary<string, string> GetRotation() {
+    var g = groups[currentGroup];
+    return g.Maps;
   }
+  
+  public void SetMapGroup(string groupKey) => currentGroup =  groupKey;
+  
 }

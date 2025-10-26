@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using CounterStrikeSharp.API;
 using RMenu;
 using RMenu.Enums;
 
@@ -43,6 +44,8 @@ public static class Theme {
     new("[ ", ACCENT_BLUE.ToMenuFormat()),
     new(" ]", ACCENT_BLUE.ToMenuFormat())
   ];
+
+  
   
   public static readonly MenuOptions MENU_OPTIONS = new MenuOptions {
     DisplayItemsInHeader = false,
@@ -51,8 +54,19 @@ public static class Theme {
     ItemFontSize         = MenuFontSize.SM,
     FooterFontSize       = MenuFontSize.S,
     
-    Cursor   = CURSOR,
-    Selector = SELECTOR
+    Cursor       = CURSOR,
+    Selector     = SELECTOR,
+    
+    Buttons = new MenuInput<MenuButton> {
+      [MenuButton.Up]     = PlayerButtons.Forward,
+      [MenuButton.Down]   = PlayerButtons.Back,
+      [MenuButton.Left]   = PlayerButtons.Moveleft,
+      [MenuButton.Right]  = PlayerButtons.Moveright,
+      [MenuButton.Select] = PlayerButtons.Jump,
+      [MenuButton.Back]   = PlayerButtons.Duck,
+      [MenuButton.Exit]   = PlayerButtons.Scoreboard,
+      [MenuButton.Assist] = PlayerButtons.Inspect
+    },
   };
 }
 

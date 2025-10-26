@@ -5,19 +5,6 @@ using RMenu.Enums;
 namespace Evo.plugin.menus.theme;
 
 public static class Theme {
-  public static readonly MenuOptions MENU_OPTIONS = new MenuOptions {
-    DisplayItemsInHeader = true,
-    BlockMovement        = true,
-    HeaderFontSize       = MenuFontSize.M,
-    ItemFontSize         = MenuFontSize.SM,
-    FooterFontSize       = MenuFontSize.S,
-    
-    // ReSharper disable once StaticMemberInitializerReferesToMemberBelow
-    Cursor   = CURSOR!,
-    // ReSharper disable once StaticMemberInitializerReferesToMemberBelow
-    Selector = SELECTOR!
-  };
-
   public static readonly Color
     TEXT_PRIMARY = Color.FromArgb(255, 255, 255); // white
 
@@ -27,7 +14,7 @@ public static class Theme {
   public static readonly Color TEXT_DARK = Color.FromArgb(68, 68, 68); // #444
 
   public static readonly Color
-    PRIMARY_BLUE = Color.FromArgb(58, 110, 165); // #3a6ea5
+    PRIMARY_BLUE = Color.FromArgb(52, 141, 235); // #3a6ea5
 
   public static readonly Color
     ACCENT_BLUE = Color.FromArgb(93, 157, 253); // #5d9dfd
@@ -45,17 +32,28 @@ public static class Theme {
     ACCENT_DARK_RED = Color.FromArgb(255, 51, 51); // #ff3333
 
   public static readonly MenuFormat HEADER_FORMAT =
-    new MenuFormat(PRIMARY_BLUE, MenuStyle.Bold, false);
-
+    new(PRIMARY_BLUE, MenuStyle.Bold, false);
+  
   private static readonly MenuObject[] CURSOR = [
-    new("►", Theme.PRIMARY_BLUE.ToMenuFormat()),
-    new("◄", Theme.PRIMARY_BLUE.ToMenuFormat())
+    new("►", ACCENT_BLUE.ToMenuFormat()),
+    new("◄", ACCENT_BLUE.ToMenuFormat())
   ];
 
   private static readonly MenuObject[] SELECTOR = [
-    new("[ ", Theme.PRIMARY_BLUE.ToMenuFormat()),
-    new(" ]", Theme.PRIMARY_BLUE.ToMenuFormat())
+    new("[ ", ACCENT_BLUE.ToMenuFormat()),
+    new(" ]", ACCENT_BLUE.ToMenuFormat())
   ];
+  
+  public static readonly MenuOptions MENU_OPTIONS = new MenuOptions {
+    DisplayItemsInHeader = false,
+    BlockMovement        = true,
+    HeaderFontSize       = MenuFontSize.M,
+    ItemFontSize         = MenuFontSize.SM,
+    FooterFontSize       = MenuFontSize.S,
+    
+    Cursor   = CURSOR,
+    Selector = SELECTOR
+  };
 }
 
 public static class ThemeExtensions {

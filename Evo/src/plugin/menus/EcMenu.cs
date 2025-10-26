@@ -24,9 +24,9 @@ public class EcMenu(IEvo evo) : EvoMenuBase("EC Menu") {
       case 0:
         new ModesMenu(evo).Show(Player, true);
         break;
-      /*case 1: new EcMenu(evo).Show(Player, true);
+      case 1: new MapsMenu(evo).Show(Player, true);
         break;
-      case 2: new EcMenu(evo).Show(Player, true);
+      /*case 2: new EcMenu(evo).Show(Player, true);
         break;
       case 3: new EcMenu(evo).Show(Player, true);
         break;

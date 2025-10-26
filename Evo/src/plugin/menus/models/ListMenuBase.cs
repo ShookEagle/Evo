@@ -1,4 +1,6 @@
-﻿using Evo.plugin.menus.theme;
+﻿using CounterStrikeSharp.API;
+using Evo.plugin.extensions;
+using Evo.plugin.menus.theme;
 using RMenu;
 using RMenu.Enums;
 
@@ -19,10 +21,11 @@ public abstract class ListMenuBase(string header, MenuOptions? options = null)
   override protected void Callback(MenuBase menu, MenuAction action) {
     if (action != MenuAction.Select || menu.SelectedItem is null) return;
     
-    var item  = menu.SelectedItem.Item;
-    var data  = item.Data ?? item.Head;
+    var item = menu.SelectedItem.Item;
+    var data = item.Data ?? item.Head;
+    var name = item.Head?.ToString();
 
-    OnSelected(data, item.Head?.ToString());
+    OnSelected(data, name ?? throw new InvalidOperationException());
   }
 
   abstract protected void OnSelected(object? data, string name);

@@ -18,7 +18,10 @@ public class MapService : IMapService {
     var g = groups[currentGroup];
     return g.Maps;
   }
-  
-  public void SetMapGroup(string groupKey) => currentGroup =  groupKey;
-  
+
+  public bool TrySetMapGroup(string groupKey) {
+    if (!groups.ContainsKey(currentGroup)) return false;
+    currentGroup =  groupKey;
+    return true;
+  }
 }

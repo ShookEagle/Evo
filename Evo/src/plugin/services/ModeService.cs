@@ -43,7 +43,7 @@ public class ModeService : IModeService {
 
     Server.ExecuteCommand("exec \"utils/unload_plugins.cfg\"");
 
-    //Set Map Group
+    if (!evo.GetMapService().TrySetMapGroup(def.Mapgroup)) return false;
 
     Server.ExecuteCommand(
       $"hostname \"=(eGO)= | EVENTS | {def.Name.ToUpper()} | EdgeGamers.com\"");

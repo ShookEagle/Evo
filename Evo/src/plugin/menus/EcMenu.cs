@@ -1,15 +1,13 @@
 ﻿using CounterStrikeSharp.API;
 using Evo.api.plugin;
+using Evo.plugin.menus.models;
 using RMenu;
 using RMenu.Enums;
 
 namespace Evo.plugin.menus;
 
-public class EcMenu : EvoMenuBase {
-  private readonly IEvo evo;
-
-  public EcMenu(IEvo evo) : base("EC Menu") {
-    this.evo = evo;
+public class EcMenu(IEvo evo) : EvoMenuBase("EC Menu") {
+  override protected void Build() {
     Items.AddRange([
       new MenuItem(MenuItemType.Button, new MenuValue("Modes")),
       new MenuItem(MenuItemType.Button, new MenuValue("Maps")),
@@ -23,9 +21,10 @@ public class EcMenu : EvoMenuBase {
     if (action != MenuAction.Select || menu.SelectedItem == null) return;
 
     switch (menu.SelectedItem.Index) {
-      /*case 0: new EcMenu(evo).Show(Player, true);
+      case 0:
+        new ModesMenu(evo).Show(Player, true);
         break;
-      case 1: new EcMenu(evo).Show(Player, true);
+      /*case 1: new EcMenu(evo).Show(Player, true);
         break;
       case 2: new EcMenu(evo).Show(Player, true);
         break;

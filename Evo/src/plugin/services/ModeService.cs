@@ -10,14 +10,13 @@ public class ModeService : IModeService {
 
   private readonly Dictionary<string, Mode> byId;
   private readonly Dictionary<string, string> aliasToId; // alias/tag -> modeId
-  private string currentMode;
 
   public IReadOnlyDictionary<string, Mode> All => byId;
-  public string CurrentMode => currentMode;
+  public string CurrentMode { get; private set; }
 
   public ModeService(IEvo evo) {
     this.evo    = evo;
-    currentMode = "Default";
+    CurrentMode = "Default";
 
     var path = $"{evo.GetBase().ModulePath}/../{evo.Config.ModesJsonPath}";
     byId = JsonCfg.Load<Dictionary<string, Mode>>(path);
@@ -53,7 +52,7 @@ public class ModeService : IModeService {
     Server.ExecuteCommand($"exec modes/{def.File}.cfg");
     Server.ExecuteCommand("mp_restartgame 1");
 
-    currentMode = mode;
+    CurrentMode = mode;
 
     return true;
   }

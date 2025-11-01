@@ -25,7 +25,11 @@ public class SettingService : ISettingService {
     Server.ExecuteCommand(
       $"exec settings/{def.Stem}_{(value ? "on" : "off")}.cfg");
     currentSettings[key] = value;
-    
+
     return true;
+  }
+
+  public bool TryGetValue(string key) {
+    return currentSettings.TryGetValue(key, out var value) && value;
   }
 }

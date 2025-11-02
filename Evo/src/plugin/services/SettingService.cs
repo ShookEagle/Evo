@@ -8,16 +8,17 @@ namespace Evo.plugin.services;
 public class SettingService : ISettingService {
   private readonly Dictionary<string, Setting> byKey;
   private readonly Dictionary<string, bool> currentSettings = new();
+  public bool ObtrusiveSettings { get; set; }
   public IReadOnlyDictionary<string, Setting> All => byKey;
+
 
   public SettingService(IEvo evo) {
     var path = $"{evo.GetBase().ModulePath}/../{evo.Config.SettingsJsonPath}";
     byKey = JsonCfg.Load<Dictionary<string, Setting>>(path);
     foreach (var kv in byKey) { currentSettings[kv.Key] = kv.Value.Default; }
-  }
 
-  public bool TryGet(string key, out Setting def)
-    => byKey.TryGetValue(key, out def!);
+    ObtrusiveSettings = true;
+  }
 
   public bool TrySetting(string key, bool value) {
     if (!byKey.TryGetValue(key, out var def)) return false;

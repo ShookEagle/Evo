@@ -40,28 +40,6 @@ body:
     validations:
       required: true
   - type: textarea
-    id: current-config
-    attributes:
-      label: Current config/data (snippet)
-      description: Paste only the relevant portion.
-      render: json
-      placeholder: |
-        {
-          "modes": { … }
-        }
-  - type: textarea
-    id: proposed-config
-    attributes:
-      label: Proposed config/data (snippet)
-      description: Paste the updated portion exactly as it should be merged.
-      render: json
-      placeholder: |
-        {
-          "modes": { … }
-        }
-    validations:
-      required: true
-  - type: textarea
     id: impact
     attributes:
       label: Impact / rationale
@@ -71,12 +49,4 @@ body:
     attributes:
       label: Validation checklist
       options:
-        - label: JSON is valid and keys match existing schema
-        - label: Values are within allowed ranges/types
-        - label: I tested locally or on a test server (if applicable)
-  - type: textarea
-    id: rollback
-    attributes:
-      label: Rollback plan
-      description: How should we revert if something goes wrong?
-      placeholder: Revert to commit/hash … or restore previous JSON snippet …
+        - label: I tested on Events Server with Players

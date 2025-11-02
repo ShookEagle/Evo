@@ -29,7 +29,7 @@ public class SettingService : ISettingService {
     return true;
   }
 
-  public bool TryGetValue(string key) {
+  public bool TryGetBool(string key) {
     return currentSettings.TryGetValue(key, out var value) && value;
   }
 }

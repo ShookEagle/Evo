@@ -21,6 +21,8 @@ public abstract class ListMenuBase(string header, MenuOptions? options = null)
     if (action != MenuAction.Select || menu.SelectedItem is null) return;
     var selected = Options.ElementAt(menu.SelectedItem.Index);
     OnSelected(selected.Value, selected.Key ?? throw new InvalidOperationException());
+    Menu.Close(Player);
+    Show(Player, true);
   }
 
   abstract protected void OnSelected(object? data, string name);

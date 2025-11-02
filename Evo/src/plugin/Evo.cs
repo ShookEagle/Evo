@@ -54,6 +54,9 @@ public class Evo : BasePlugin, IEvo {
 
   private void loadCommands() {
     commands.Add("css_ec", new EcCmd(this));
+    
+    foreach (var setting in GetSettingService().All)
+      commands.Add($"css_{setting.Key}", new SettingCmd(this));
 
     foreach (var command in commands)
       AddCommand(command.Key,

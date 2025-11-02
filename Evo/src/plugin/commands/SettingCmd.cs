@@ -22,7 +22,7 @@ public class SettingCmd(IEvo evo) : Command(evo) {
     }
       
     var setting = info.ArgByIndex(0).Split("_").Last();
-    var setter  = !evo.GetSettingService().TryGetBool(setting);
+    var setter  = !Plugin.GetSettingService().TryGetBool(setting);
 
     if (info.ArgCount == 2) {
       var query = info.GetArg(1).ToLower();

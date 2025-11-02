@@ -1,5 +1,6 @@
 ﻿using CounterStrikeSharp.API;
 using Evo.api.plugin;
+using Evo.plugin.extensions;
 using Evo.plugin.menus.models;
 using Evo.plugin.menus.theme;
 using RMenu;
@@ -32,16 +33,15 @@ public class EcMenu(IEvo evo) : EvoMenuBase("EC Menu") {
       case 2:
         new SettingsMenu(evo).Show(Player, true);
         break;
-      /*case 3:
-        new EcMenu(evo).Show(Player, true);
+      case 3:
+        new ToolsMenu(evo).Show(Player, true);
         break;
-      case 4: 
+      /*case 4:
         new EcMenu(evo).Show(Player, true);
         break;*/
       default:
-        evo.GetAnnouncer()
-         .Announce(menu.Player.PlayerName, "", "Reset", "The Server",
-            "lightred");
+        menu.Player.PrintLocalizedChat(evo.GetBase().Localizer,
+          "error_try_again", "Invalid Menu Operation");
         break;
     }
   }

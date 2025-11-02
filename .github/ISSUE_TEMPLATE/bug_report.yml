@@ -1,7 +1,9 @@
 name: 🪲 Bug Report
 description: Something doesn’t work as expected with the Events Server.
 title: "[Bug] "
-labels: ["bug", "triage"]
+labels:
+  - "type::1 Bug"
+  - "status::1 Triage"
 assignees:
   - ShookEagle
 body:

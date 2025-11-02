@@ -1,7 +1,10 @@
 name: 🪲 Bug Report
-description: Something doesn’t work as expected
-title: "[Bug]: "
-labels: ["bug"]
+description: Something doesn’t work as expected with the Events Server
+title: "[Bug] "
+labels: ["Bug"]
+assignees:
+  - ShookEagle
+type: bug
 body:
   - type: textarea
     id: what-happened
@@ -20,16 +23,12 @@ body:
         1. …
         2. …
         3. …
-  - type: input
-    id: version
+  type: dropdown
+    id: priority
     attributes:
-      label: Version / Commit
-      placeholder: e.g., v1.2.3 or 1a2b3c
-  - type: dropdown
-    id: area
-    attributes:
-      label: Area
-      options: ["Web Panel", "CS# Plugin", "Game Modes", "Maps/MapGroups", "Docs"]
+      label: Priority
+      options: [ "P0 - Critical", "P1 - High", "P2 - Medium", "P3 - Low" ]
+      default: 2
   - type: textarea
     id: logs
     attributes:

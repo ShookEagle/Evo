@@ -29,11 +29,14 @@ public class EcMenu(IEvo evo) : EvoMenuBase("EC Menu") {
       case 1:
         new MapsMenu(evo).Show(Player, true);
         break;
-      /*case 2: new EcMenu(evo).Show(Player, true);
+      case 2:
+        new SettingsMenu(evo).Show(Player, true);
         break;
-      case 3: new EcMenu(evo).Show(Player, true);
+      /*case 3:
+        new EcMenu(evo).Show(Player, true);
         break;
-      case 4: new EcMenu(evo).Show(Player, true);
+      case 4: 
+        new EcMenu(evo).Show(Player, true);
         break;*/
       default:
         evo.GetAnnouncer()

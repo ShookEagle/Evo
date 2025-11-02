@@ -1,0 +1,37 @@
+name: 🪲 Bug Report
+description: Something doesn’t work as expected
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected to happen.
+      placeholder: When I click X, Y happens instead of Z…
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to Reproduce
+      description: Numbered steps, please.
+      placeholder: |
+        1. …
+        2. …
+        3. …
+  - type: input
+    id: version
+    attributes:
+      label: Version / Commit
+      placeholder: e.g., v1.2.3 or 1a2b3c
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: ["Web Panel", "CS# Plugin", "Game Modes", "Maps/MapGroups", "Docs"]
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Screenshots
+      render: shell

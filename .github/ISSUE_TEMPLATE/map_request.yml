@@ -1,0 +1,75 @@
+name: 🗺️ Map Request
+description: Request a map addition, removal, or rotation change.
+title: "[Map] "
+labels:
+  - "type::2 Update"
+  - "status::1 Triage"
+assignees:
+  - ShookEagle
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to suggest adding, removing, or rotating maps.
+        You can include multiple maps in one submission.
+  - type: dropdown
+    id: map-action
+    attributes:
+      label: Action
+      options:
+        - Add map(s)
+        - Remove map(s)
+        - Rotate in/out
+        - Update version(s)
+    validations:
+      required: true
+  - type: textarea
+    id: map-list
+    attributes:
+      label: Map names
+      description: One map per line (e.g., `de_example` or `cs_office`).
+      placeholder: |
+        de_example
+        de_factory
+        cs_mansion
+    validations:
+      required: true
+  - type: textarea
+    id: workshop-links
+    attributes:
+      label: Workshop URLs or IDs
+      description: One per line, matching order of maps above. For vanilla cs maps put 0
+      placeholder: |
+        https://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX
+        https://steamcommunity.com/sharedfiles/filedetails/?id=YYYYYYYYY
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why this change?
+      description: Gameplay goals, event fit, popularity, known issues, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing & verification
+      description: Has each map been playtested? Known bugs/clips? Navmesh status?
+      placeholder: |
+        - de_example: tested with 10 players, nav OK  
+        - cs_mansion: clipping near spawn fixed
+  - type: textarea
+    id: performance
+    attributes:
+      label: Performance notes
+      description: FPS, server load, or player count impact for each map.
+      placeholder: |
+        - de_example: stable 300 FPS  
+        - cs_mansion: minor drops near courtyard
+  - type: checkboxes
+    id: dependencies
+    attributes:
+      label: Dependencies & compatibility
+      options:
+        - label: No external content required
+        - label: Custom content included or properly referenced
+        - label: Compatible with current server plugins/modes

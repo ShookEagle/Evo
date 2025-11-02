@@ -1,0 +1,53 @@
+name: 💡 Feature Request
+description: Suggest a new feature or improvement for Evo or the Events Server.
+title: "[Feat] "
+labels:
+  - "type::3 Feature"
+  - "status::1 Triage"
+assignees:
+  - ShookEagle
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a feature or improvement!
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem or use-case?
+      description: Describe the problem this would solve or the user story.
+      placeholder: As an Event Coordinator, I want to…
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Outline how you think this should work at a high level.
+      placeholder: Add a setting in X that does Y so that Z…
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you thought about?
+      placeholder: We could also…
+  - type: textarea
+    id: scope
+    attributes:
+      label: Out of scope (if any)
+      description: Call out what's explicitly not included.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Bullet points that define “done.”
+      placeholder: |
+        - [ ] Given … when … then …
+        - [ ] UI shows …
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots / mockups
+      description: Drop images or links that help explain the request.

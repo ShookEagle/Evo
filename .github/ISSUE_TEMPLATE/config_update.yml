@@ -1,0 +1,82 @@
+name: ⚙️ Config / Data Update
+description: Suggest changes to game mode, settings, or internal data configuration.
+title: "[Cfg] "
+labels:
+  - "type::2 Update"
+  - "status::1 Triage"
+assignees:
+  - ShookEagle
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request changes to modes, map groups, presets, or other data/config.
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: Change type
+      options:
+        - Mode settings update
+        - Add new mode
+        - Remove mode
+        - Map group update
+        - Command pack update
+        - Other data/config
+    validations:
+      required: true
+  - type: input
+    id: target-name
+    attributes:
+      label: Target name / key
+      description: Mode/map group/pack identifier (exact string if possible).
+      placeholder: e.g., "gungame", "mg_active"
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary of requested change
+      description: Briefly explain what should change and why.
+    validations:
+      required: true
+  - type: textarea
+    id: current-config
+    attributes:
+      label: Current config/data (snippet)
+      description: Paste only the relevant portion.
+      render: json
+      placeholder: |
+        {
+          "modes": { … }
+        }
+  - type: textarea
+    id: proposed-config
+    attributes:
+      label: Proposed config/data (snippet)
+      description: Paste the updated portion exactly as it should be merged.
+      render: json
+      placeholder: |
+        {
+          "modes": { … }
+        }
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact / rationale
+      description: What does this change affect (server behavior, balance, scheduling, etc.)?
+  - type: checkboxes
+    id: validation
+    attributes:
+      label: Validation checklist
+      options:
+        - label: JSON is valid and keys match existing schema
+        - label: Values are within allowed ranges/types
+        - label: I tested locally or on a test server (if applicable)
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Rollback plan
+      description: How should we revert if something goes wrong?
+      placeholder: Revert to commit/hash … or restore previous JSON snippet …

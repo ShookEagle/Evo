@@ -7,17 +7,10 @@ namespace Evo.plugin.listeners;
 
 public class CfgExecListeners {
   private readonly IEvo evo;
-
-  /// <summary>
-  ///   Over Redundant Settings Force due to maps being incredibly
-  ///   inconsistent with when they run their cfg's
-  /// </summary>
+  
   public CfgExecListeners(IEvo evo) {
     this.evo = evo;
-
-    evo.GetBase().RegisterEventHandler<EventRoundPrestart>(forceSettings);
     evo.GetBase().RegisterEventHandler<EventRoundStart>(forceSettings);
-    evo.GetBase().RegisterEventHandler<EventRoundPoststart>(forceSettings);
   }
 
   private HookResult forceSettings<T>(T @event, GameEventInfo info) {

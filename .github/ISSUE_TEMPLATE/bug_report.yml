@@ -31,7 +31,7 @@ body:
         - P1 - High
         - P2 - Medium
         - P3 - Low
-      default: P2 - Medium
+      default: P3 - Low
   - type: textarea
     id: logs
     attributes:

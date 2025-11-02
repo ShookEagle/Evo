@@ -3,6 +3,7 @@ using CounterStrikeSharp.API.Core.Capabilities;
 using Evo.api.plugin;
 using Evo.api.plugin.services;
 using Evo.plugin.commands;
+using Evo.plugin.listeners;
 using Evo.plugin.services;
 using MAULActainShared.plugin;
 
@@ -45,6 +46,8 @@ public class Evo : BasePlugin, IEvo {
     modeService      = new ModeService(this);
     mapService       = new MapService(this);
     settingService   = new SettingService(this);
+
+    _ = new CfgExecListeners(this);
 
     loadCommands();
   }

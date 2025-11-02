@@ -1,4 +1,5 @@
-﻿using Evo.api.plugin;
+﻿using System.Reflection.Metadata;
+using Evo.api.plugin;
 using Evo.plugin.menus.models;
 using Evo.plugin.menus.theme;
 using RMenu;
@@ -16,12 +17,13 @@ public class SettingsMenu : ListMenuBase {
   }
 
   override protected void Build() {
+    Items.Clear();
     foreach (var option in Options) {
-      var value = evo.GetSettingService().TryGetValue(option.Key);
+      var value = evo.GetSettingService().TryGetBool(option.Value);
 
       Items.Add(new MenuItem(MenuItemType.Button,
         new MenuValue(option.Key, Theme.TEXT_PRIMARY.ToMenuFormat()),
-        tail: new MenuValue(value ? "✔" : "✘",
+        tail: new MenuValue($" [{(value ? "✔" : "✘")}]",
           value ?
             Theme.ACCENT_GREEN.ToMenuFormat() :
             Theme.ACCENT_RED.ToMenuFormat())));
@@ -30,9 +32,10 @@ public class SettingsMenu : ListMenuBase {
 
   override protected void OnSelected(object? data, string? name) {
     if (data is not string s) return;
-    if (evo.GetModeService().TrySetMode(s))
-      evo.GetAnnouncer()
-       .Announce(Player.PlayerName, "Changed the mode to", name ?? "ERROR",
-          actionColor: "lightpurple");
+    var value = !evo.GetSettingService().TryGetBool(s);
+    if (!evo.GetSettingService().TrySetting(s, value)) return;
+    //evo.GetAnnouncer()
+     //.Announce(Player.PlayerName, $"{(value ? "Enabled" : "Disabled")}",
+        //name ?? "ERROR", actionColor: value ? "lime" : "lightred");
   }
 }

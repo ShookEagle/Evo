@@ -4,7 +4,6 @@ title: "[Bug] "
 labels: ["Bug"]
 assignees:
   - ShookEagle
-type: bug
 body:
   - type: textarea
     id: what-happened
@@ -27,8 +26,12 @@ body:
     id: priority
     attributes:
       label: Priority
-      options: [ "P0 - Critical", "P1 - High", "P2 - Medium", "P3 - Low" ]
-      default: 2
+      options:
+        - P0 - Critical
+        - P1 - High
+        - P2 - Medium
+        - P3 - Low
+      default: P2 - Medium
   - type: textarea
     id: logs
     attributes:

@@ -1,4 +1,5 @@
-﻿using Evo.api.plugin;
+﻿using CounterStrikeSharp.API.Core;
+using Evo.api.plugin;
 using Evo.plugin.extensions;
 using Evo.plugin.menus.models;
 using Evo.plugin.menus.theme;
@@ -10,12 +11,21 @@ namespace Evo.plugin.menus;
 public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
   override protected void Build() {
     var obValue = evo.GetSettingService().ObtrusiveSettings;
+    var running = evo.GetStatusService().Running;
     Items.Add(new MenuItem(MenuItemType.Button,
       new MenuValue("Obtrusive Settings", Theme.TEXT_PRIMARY.ToMenuFormat()),
       tail: new MenuValue($" [{(obValue ? "✔" : "✘")}]",
         obValue ?
           Theme.ACCENT_GREEN.ToMenuFormat() :
           Theme.ACCENT_RED.ToMenuFormat())));
+    Items.Add(new MenuItem(MenuItemType.Button,
+      new MenuValue("Event Status", Theme.TEXT_PRIMARY.ToMenuFormat()),
+      tail: new MenuValue($" [{(running ? "✔" : "✘")}]",
+        running ?
+          Theme.ACCENT_GREEN.ToMenuFormat() :
+          Theme.ACCENT_RED.ToMenuFormat())));
+    Items.Add(new MenuItem(MenuItemType.Button,
+      new MenuValue("Print Status", Theme.TEXT_PRIMARY.ToMenuFormat())));
   }
 
   override protected void Callback(MenuBase menu, MenuAction action) {
@@ -25,7 +35,12 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
       case 0:
         handleObtrusiveSelection();
         break;
-      
+      case 1:
+        handleEventStatus(menu.Player);
+        break;
+      case 2:
+        handlePrintStatus(menu.Player);
+        break;
       default:
         menu.Player.PrintLocalizedChat(evo.GetBase().Localizer,
           "error_try_again", "Invalid Menu Operation");
@@ -39,5 +54,26 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
   private void handleObtrusiveSelection() {
     evo.GetSettingService().ObtrusiveSettings =
       !evo.GetSettingService().ObtrusiveSettings;
+  }
+
+  private void handleEventStatus(CCSPlayerController? player) {
+    if (player == null) return;
+
+    var toSet = !evo.GetStatusService().Running;
+    if (toSet) {
+      evo.GetStatusService().Start();
+      evo.GetAnnouncer().Announce(player.PlayerName, "Started", "the Event");
+      return;
+    }
+
+    evo.GetStatusService().Stop();
+    evo.GetAnnouncer().Announce(player.PlayerName, "Stopped", "the Event");
+  }
+
+  private void handlePrintStatus(CCSPlayerController? player) {
+    if (player == null) return;
+    evo.GetStatusService().PrintStatus(player);
+    player.PrintLocalizedChat(evo.GetBase().Localizer,
+      "command_status_printed");
   }
 }

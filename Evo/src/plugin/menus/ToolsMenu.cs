@@ -12,20 +12,29 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
   override protected void Build() {
     var obValue = evo.GetSettingService().ObtrusiveSettings;
     var running = evo.GetStatusService().Running;
-    Items.Add(new MenuItem(MenuItemType.Button,
-      new MenuValue("Obtrusive Settings", Theme.TEXT_PRIMARY.ToMenuFormat()),
-      tail: new MenuValue($" [{(obValue ? "✔" : "✘")}]",
-        obValue ?
-          Theme.ACCENT_GREEN.ToMenuFormat() :
-          Theme.ACCENT_RED.ToMenuFormat())));
+    
+    // Toggle Status Button
     Items.Add(new MenuItem(MenuItemType.Button,
       new MenuValue("Event Status", Theme.TEXT_PRIMARY.ToMenuFormat()),
       tail: new MenuValue($" [{(running ? "✔" : "✘")}]",
         running ?
           Theme.ACCENT_GREEN.ToMenuFormat() :
           Theme.ACCENT_RED.ToMenuFormat())));
+    
+    // Print Status Button
     Items.Add(new MenuItem(MenuItemType.Button,
       new MenuValue("Print Status", Theme.TEXT_PRIMARY.ToMenuFormat())));
+    
+    // Spacer
+    Items.Add(new MenuItem(MenuItemType.Spacer));
+    
+    //Obtrusive Settings Button
+    Items.Add(new MenuItem(MenuItemType.Button,
+      new MenuValue("Obtrusive Settings", Theme.TEXT_PRIMARY.ToMenuFormat()),
+      tail: new MenuValue($" [{(obValue ? "✔" : "✘")}]",
+        obValue ?
+          Theme.ACCENT_GREEN.ToMenuFormat() :
+          Theme.ACCENT_RED.ToMenuFormat())));
   }
 
   override protected void Callback(MenuBase menu, MenuAction action) {
@@ -33,13 +42,13 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
 
     switch (menu.SelectedItem.Index) {
       case 0:
-        handleObtrusiveSelection();
-        break;
-      case 1:
         handleEventStatus(menu.Player);
         break;
-      case 2:
+      case 1:
         handlePrintStatus(menu.Player);
+        break;
+      case 3:
+        handleObtrusiveSelection();
         break;
       default:
         menu.Player.PrintLocalizedChat(evo.GetBase().Localizer,

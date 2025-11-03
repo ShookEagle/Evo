@@ -33,7 +33,7 @@ public class StatusService : IStatusService {
     Running  = true;
     startUtc = NowProvider.Utc;
 
-    var players = Utilities.GetPlayers().Where(p => p.IsReal()).ToList();
+    var players = Utilities.GetPlayers().Where(p => p.IsReal(false)).ToList();
     peakPlayers = players.Count;
     foreach (var player in players) {
       stats[player.SteamID] = new PlayerStat {

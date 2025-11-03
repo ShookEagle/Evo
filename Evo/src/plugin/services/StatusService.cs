@@ -107,13 +107,11 @@ public class StatusService(IEvo evo) : IStatusService {
     for (var i = 0; i < list.Count; ++i)
       list[i] = (i + 1, list[i].Id, list[i].Name, list[i].Seconds);
 
-    player.PrintToConsole($"=== Event Status ===");
-    player.PrintToConsole(
-      $"Duration: {fmtTime(Duration)} | Peak: {peakPlayers} | Unique: {stats.Count}");
+    player.PrintToConsole($"=== Begin Event Logs (Duration: {fmtTime(Duration)}) | (Peak: {peakPlayers}) | (Unique: {stats.Count}) ===");
     foreach (var row in list)
       player.PrintToConsole(
         $"{row.Rank}. {row.Id} {row.Name} {fmtTime(row.Seconds)}");
-    player.PrintToConsole("====================");
+    player.PrintToConsole("=== End Event Logs ===");
   }
 
   private static string fmtTime(TimeSpan t) {

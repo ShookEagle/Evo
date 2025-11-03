@@ -21,7 +21,7 @@ public class StatusListeners {
     GameEventInfo info) {
     if (!statusService.Running) return HookResult.Continue;
     var player = @event.Userid;
-    if (!player.IsReal() || player == null) return HookResult.Continue;
+    if (!player.IsReal(false) || player == null) return HookResult.Continue;
     
     statusService.AddPlayer(player);
     return HookResult.Continue;
@@ -31,7 +31,7 @@ public class StatusListeners {
     GameEventInfo info) {
     if (!statusService.Running) return HookResult.Continue;
     var player = @event.Userid;
-    if (!player.IsReal() || player == null) return HookResult.Continue;
+    if (!player.IsReal(false) || player == null) return HookResult.Continue;
     
     statusService.OnLeave(player);
     return HookResult.Continue;

@@ -9,7 +9,7 @@ namespace Evo.plugin.commands.status;
 public class EStartCmd(IEvo evo) : Command(evo) {
   public override void OnCommand(CCSPlayerController? executor,
     CommandInfo info) {
-    if (executor != null && executor.GetRank() < MaulPermission.Manager) {
+    if (executor.IsReal(false) && executor != null && executor.GetRank() < MaulPermission.Manager) {
       info.ReplyLocalized(Plugin.GetBase().Localizer, "no_permission",
         "Manager", "rank");
       return;
@@ -26,6 +26,6 @@ public class EStartCmd(IEvo evo) : Command(evo) {
     Plugin.GetStatusService().Start();
     info.ReplyLocalized(Plugin.GetBase().Localizer,
       "command_status_event_started");
-    Plugin.GetAnnouncer().Announce(executor.PlayerName, "", "Started", "the Event.");
+    Plugin.GetAnnouncer().Announce(executor.PlayerName, "Started", "the Event");
   }
 }

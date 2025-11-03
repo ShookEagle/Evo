@@ -8,7 +8,7 @@ namespace Evo.plugin.commands.status;
 
 public class EStopCmd(IEvo plugin) : Command(plugin) {
   public override void OnCommand(CCSPlayerController? executor, CommandInfo info) {
-    if (executor != null && executor.GetRank() < MaulPermission.Manager) {
+    if (executor.IsReal(false) && executor != null && executor.GetRank() < MaulPermission.Manager) {
       info.ReplyLocalized(Plugin.GetBase().Localizer, "no_permission",
         "Manager", "rank");
       return;
@@ -25,6 +25,6 @@ public class EStopCmd(IEvo plugin) : Command(plugin) {
     Plugin.GetStatusService().Stop();
     info.ReplyLocalized(Plugin.GetBase().Localizer,
       "command_status_event_stopped");
-    Plugin.GetAnnouncer().Announce(executor.PlayerName, "", "Stopped", "the Event.");
+    Plugin.GetAnnouncer().Announce(executor.PlayerName, "Stopped", "the Event");
   }
 }

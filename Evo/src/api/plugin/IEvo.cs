@@ -13,4 +13,5 @@ public interface IEvo : IPluginConfig<EvoConfig> {
   IModeService GetModeService();
   IMapService GetMapService();
   ISettingService GetSettingService();
+  IStatusService GetStatusService();
 }

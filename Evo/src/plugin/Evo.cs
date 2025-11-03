@@ -18,9 +18,6 @@ public class Evo : BasePlugin, IEvo {
   public override string ModuleDescription
     => "'Evo' or Events Organizer for the EdgeGamers Events Server";
 
-  private static PluginCapability<IActain>? ActainCapability { get; } =
-    new("maulactain:core");
-
   private readonly Dictionary<string, Command> commands = new();
 
   private IAnnouncerService? announcerService;
@@ -36,7 +33,6 @@ public class Evo : BasePlugin, IEvo {
   public void OnConfigParsed(EvoConfig? config) { Config = config; }
 
   public BasePlugin GetBase() { return this; }
-  public IActain GetActain() { return ActainCapability!.Get()!; }
   public IAnnouncerService GetAnnouncer() { return announcerService!; }
   public IModeService GetModeService() { return modeService!; }
   public IMapService GetMapService() { return mapService!; }

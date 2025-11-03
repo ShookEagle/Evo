@@ -1,8 +1,13 @@
 {
-  "prefix": "{darkblue}EVENTS> ",
+  "prefix": "{darkblue}EVENTS> {bluegrey}",
   "error": "%prefix%{darkred}Error: {lightred}{0}. {white}Please contact ShookEagle.",
   "error_try_again": "%prefix%{darkred}Error: {lightred}{0}. {grey}Please try again, {white}if the problem persists{grey}, contact ShookEagle.",
   "no_permission": "%prefix%{red}This requires the {white}{0}{red} {1}.",
   "usage": "%prefix%Usage: {green}{0}",
   "admin_action_format": "%prefix%{blue}{0} {bluegrey}{1} {2}{3} {bluegrey}{4}.",
+  "command_status_err_not_started": "%prefix%{red}No event started.",
+  "command_status_err_event_started": "%prefix%{red}Event status already started.",
+  "command_status_event_started": "%prefix%You {green}started {bluegrey}the event.",
+  "command_status_event_stopped": "%prefix%You {lightred}stopped {bluegrey}the event.",
+  "command_status_printed": "%prefix%Event status printed in console."
 }

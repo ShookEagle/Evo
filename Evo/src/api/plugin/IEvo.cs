@@ -7,8 +7,7 @@ namespace Evo.api.plugin;
 
 public interface IEvo : IPluginConfig<EvoConfig> {
   BasePlugin GetBase();
-  //IActain GetActain();
-  //TODO: Readd MAUL
+  IActain GetActain();
   IAnnouncerService GetAnnouncer();
   IModeService GetModeService();
   IMapService GetMapService();

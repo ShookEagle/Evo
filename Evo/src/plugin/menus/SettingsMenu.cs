@@ -34,8 +34,8 @@ public class SettingsMenu : ListMenuBase {
     if (data is not string s) return;
     var value = !evo.GetSettingService().TryGetBool(s);
     if (!evo.GetSettingService().TrySetting(s, value)) return;
-    //evo.GetAnnouncer()
-     //.Announce(Player.PlayerName, $"{(value ? "Enabled" : "Disabled")}",
-        //name ?? "ERROR", actionColor: value ? "lime" : "lightred");
+    evo.GetAnnouncer()
+     .Announce(Player.PlayerName, $"{(value ? "Enabled" : "Disabled")}",
+        name ?? "ERROR", actionColor: value ? "lime" : "lightred");
   }
 }

@@ -3,6 +3,7 @@ using CounterStrikeSharp.API.Core.Capabilities;
 using Evo.api.plugin;
 using Evo.api.plugin.services;
 using Evo.plugin.commands;
+using Evo.plugin.commands.status;
 using Evo.plugin.listeners;
 using Evo.plugin.services;
 using MAULActainShared.plugin;
@@ -58,6 +59,18 @@ public class Evo : BasePlugin, IEvo {
 
   private void loadCommands() {
     commands.Add("css_ec", new EcCmd(this));
+    
+    commands.Add("css_estart", new EStartCmd(this));
+    commands.Add("css_startevent", new EStartCmd(this));
+    commands.Add("css_eventstart", new EStartCmd(this));
+    
+    commands.Add("css_estop", new EStopCmd(this));
+    commands.Add("css_stopevent", new EStopCmd(this));
+    commands.Add("css_endevent", new EStopCmd(this));
+    commands.Add("css_eventstop", new EStopCmd(this));
+
+    commands.Add("css_estatus", new EStatusCmd(this));
+    commands.Add("css_ecstatus", new EStatusCmd(this));
     
     foreach (var setting in GetSettingService().All)
       commands.Add($"css_{setting.Key}", new SettingCmd(this));

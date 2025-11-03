@@ -7,8 +7,10 @@ using MAULActainShared.maul.enums;
 namespace Evo.plugin.commands.status;
 
 public class EStopCmd(IEvo plugin) : Command(plugin) {
-  public override void OnCommand(CCSPlayerController? executor, CommandInfo info) {
-    if (executor.IsReal(false) && executor != null && executor.GetRank() < MaulPermission.Manager) {
+  public override void OnCommand(CCSPlayerController? executor,
+    CommandInfo info) {
+    if (executor.IsReal(false) && executor != null
+      && executor.GetRank() < MaulPermission.Manager) {
       info.ReplyLocalized(Plugin.GetBase().Localizer, "no_permission",
         "Manager", "rank");
       return;
@@ -21,7 +23,7 @@ public class EStopCmd(IEvo plugin) : Command(plugin) {
         "command_status_err_not_started");
       return;
     }
-    
+
     Plugin.GetStatusService().Stop();
     info.ReplyLocalized(Plugin.GetBase().Localizer,
       "command_status_event_stopped");

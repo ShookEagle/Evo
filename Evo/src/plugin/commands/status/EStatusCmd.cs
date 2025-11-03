@@ -7,7 +7,8 @@ using MAULActainShared.maul.enums;
 namespace Evo.plugin.commands.status;
 
 public class EStatusCmd(IEvo plugin) : Command(plugin) {
-  public override void OnCommand(CCSPlayerController? executor, CommandInfo info) {
+  public override void OnCommand(CCSPlayerController? executor,
+    CommandInfo info) {
     if (executor != null && executor.GetRank() < MaulPermission.Manager) {
       info.ReplyLocalized(Plugin.GetBase().Localizer, "no_permission",
         "Manager", "rank");
@@ -15,9 +16,8 @@ public class EStatusCmd(IEvo plugin) : Command(plugin) {
     }
 
     if (executor == null) return;
-    
+
     Plugin.GetStatusService().PrintStatus(executor);
-    info.ReplyLocalized(Plugin.GetBase().Localizer,
-      "command_status_printed");
+    info.ReplyLocalized(Plugin.GetBase().Localizer, "command_status_printed");
   }
 }

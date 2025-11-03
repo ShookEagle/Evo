@@ -13,7 +13,7 @@ public class CfgExecListeners {
     evo.GetBase().RegisterEventHandler<EventRoundStart>(forceSettings);
   }
 
-  private HookResult forceSettings(EventRoundStart @event, GameEventInfo info) {
+  private HookResult forceSettings<T>(T @event, GameEventInfo info) {
     var settingService = evo.GetSettingService();
     if (!settingService.ObtrusiveSettings) return HookResult.Continue;
     

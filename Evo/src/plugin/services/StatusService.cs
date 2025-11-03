@@ -7,7 +7,8 @@ using Evo.plugin.models;
 
 namespace Evo.plugin.services;
 
-public class StatusService(IEvo evo) : IStatusService {
+public class StatusService : IStatusService {
+
   private readonly struct NowProvider {
     public static DateTime Utc => DateTime.UtcNow;
   }

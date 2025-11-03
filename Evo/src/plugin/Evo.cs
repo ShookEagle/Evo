@@ -48,7 +48,7 @@ public class Evo : BasePlugin, IEvo {
     modeService      = new ModeService(this);
     mapService       = new MapService(this);
     settingService   = new SettingService(this);
-    statusService    = new StatusService(this);
+    statusService    = new StatusService();
 
     _ = new CfgExecListeners(this);
     _ = new StatusListeners(this);

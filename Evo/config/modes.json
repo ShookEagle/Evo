@@ -6,7 +6,7 @@
   "bhop":       { "name": "Bhop",            "file": "bhop",          "tags": ["bhop","hop","bunny","autohop"],                "mapgroup": "mg_bhop" },
   "combatsurf": { "name": "Combat Surf",     "file": "combatsurf",    "tags": ["surf","combat","awp","bhop"],                  "mapgroup": "mg_csurf" },
   "course":     { "name": "Course",          "file": "course",        "tags": ["mg","minigames","course","kz","race"],         "mapgroup": "mg_course" },
-  "Default":    { "name": "Default",         "file":  "default",      "tags": [""],                                            "mapgroup": "mg_active"},
+  "default":    { "name": "Default",         "file":  "default",      "tags": [""],                                            "mapgroup": "mg_active"},
   "deathmatch": { "name": "Deathmatch",      "file": "deathmatch",    "tags": ["dm","deathmatch"],                             "mapgroup": "mg_dm" },
   "deathrun":   { "name": "Deathrun",        "file": "deathrun",      "tags": ["deahtrun","minigames","mg","course"],          "mapgroup": "mg_deathrun" },
   "executes":   { "name": "Executes",        "file": "executes",      "tags": ["executes","warmups","comp"],                   "mapgroup": "mg_comp" },

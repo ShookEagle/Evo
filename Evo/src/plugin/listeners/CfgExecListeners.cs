@@ -20,7 +20,7 @@ public class CfgExecListeners {
     var modeService = evo.GetModeService();
     modeService.TryGet(modeService.CurrentMode, out var def);
 
-    Server.ExecuteCommand($"exec modes/{def.File}.cfg");
+    Server.ExecuteCommand($"exec modes/{def.File}_settings.cfg");
     foreach (var setting in settingService.All)
       settingService.TrySetting(setting.Key,
         settingService.TryGetBool(setting.Key));

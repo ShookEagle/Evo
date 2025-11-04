@@ -1,4 +1,4 @@
-﻿# Evo | ![GitHub Release](https://img.shields.io/github/v/release/ShookEagle/Evo?style=for-the-badge) [![Discord](https://img.shields.io/discord/161245089774043136?style=for-the-badge&logo=discord&label=Discord)](https://edgm.rs/discord)
+﻿# Evo | [![Discord](https://img.shields.io/discord/161245089774043136?style=for-the-badge&logo=discord&label=Discord)](https://edgm.rs/discord)
 
 **Evo** — short for **Event Organizer** — is the central framework powering the EdgeGamers **Events Server**.  
 It manages game modes, map groups, and plugin settings serving as the **Event Coordinators’ control panel** for all hosted events.

@@ -8,19 +8,24 @@ namespace Evo.plugin.menus.models;
 
 public abstract class ListMenuBase(string header, MenuOptions? options = null)
   : EvoMenuBase(header, options) {
-  public new Dictionary<string, string> Options { get; set; } = [];
+  new protected Dictionary<string, string> Options { get; init; } = [];
+  public string? CurrentValue;
 
   override protected void Build() {
     foreach (var option in Options) {
       Items.Add(new MenuItem(MenuItemType.Button,
-        new MenuValue(option.Key, Theme.TEXT_PRIMARY.ToMenuFormat())));
+        new MenuValue(option.Value,
+          option.Key != CurrentValue ?
+            Theme.TEXT_PRIMARY.ToMenuFormat() :
+            Theme.ACCENT_GREEN.ToMenuFormat())));
     }
   }
 
   override protected void Callback(MenuBase menu, MenuAction action) {
     if (action != MenuAction.Select || menu.SelectedItem is null) return;
     var selected = Options.ElementAt(menu.SelectedItem.Index);
-    OnSelected(selected.Value, selected.Key ?? throw new InvalidOperationException());
+    OnSelected(selected.Value,
+      selected.Key ?? throw new InvalidOperationException());
     Menu.Close(Player);
     Show(Player, true);
   }

@@ -11,6 +11,7 @@ public class ModesMenu : ListMenuBase {
     this.evo = evo;
     Options = evo.GetModeService()
      .All.ToDictionary(kvp => kvp.Value.Name, kvp => kvp.Key);
+    CurrentValue = evo.GetModeService().CurrentMode;
   }
 
   override protected void OnSelected(object? data, string? name) {

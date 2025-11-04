@@ -1,6 +1,7 @@
 ﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using Evo.api.plugin;
+using Evo.plugin.extensions;
 using Evo.plugin.menus.models;
 using Evo.plugin.menus.theme;
 using RMenu;
@@ -22,10 +23,13 @@ public class ResetMenu(IEvo evo) : EvoMenuBase("Reset Server?") {
   }
 
   override protected void Callback(MenuBase menu, MenuAction action) {
-    if (menu.SelectedItem == null) return;
+    if (action != MenuAction.Select || menu.SelectedItem == null) return;
     switch (menu.SelectedItem.Index) {
       case 2:
         resetServer(menu.Player);
+        break;
+      default: menu.Player.PrintLocalizedChat(evo.GetBase().Localizer,
+          "error_try_again", "Invalid Menu Operation");
         break;
     }
   }

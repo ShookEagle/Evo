@@ -14,8 +14,8 @@ public abstract class ListMenuBase(string header, MenuOptions? options = null)
   override protected void Build() {
     foreach (var option in Options) {
       Items.Add(new MenuItem(MenuItemType.Button,
-        new MenuValue(option.Value,
-          option.Key != CurrentValue ?
+        new MenuValue(option.Key,
+          option.Value != CurrentValue ?
             Theme.TEXT_PRIMARY.ToMenuFormat() :
             Theme.ACCENT_GREEN.ToMenuFormat())));
     }

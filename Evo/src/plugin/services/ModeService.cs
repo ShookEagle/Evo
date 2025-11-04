@@ -16,7 +16,7 @@ public class ModeService : IModeService {
 
   public ModeService(IEvo evo) {
     this.evo    = evo;
-    CurrentMode = "Default";
+    CurrentMode = "default";
 
     var path = $"{evo.GetBase().ModulePath}/../{evo.Config.ModesJsonPath}";
     byId = JsonCfg.Load<Dictionary<string, Mode>>(path);

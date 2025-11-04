@@ -28,22 +28,28 @@ jobs:
         run: dotnet restore
 
       - name: Build (Release)
-        run: dotnet build -c Release --no-restore
+        run: |
+          set -e
+          CSPROJ="$(git ls-files '*.csproj' | head -n1)"
+          echo "Using project: $CSPROJ"
+          dotnet publish "$CSPROJ" -c Release -o out
 
       - name: Stage files for packaging
         run: |
-          mkdir -p dist/Evo lang config
+          set -e
+          CSPROJ="$(git ls-files '*.csproj' | head -n1)"
+          PROJDIR="$(dirname "$CSPROJ")"
+
           mkdir -p dist/Evo/lang dist/Evo/config
 
-          cp "bin/Release/net8.0/${{ env.PLUGIN_DLL_NAME }}" "dist/Evo/"
+          cp "out/Evo.dll" "dist/Evo/"
 
-          cp -f "lang/en.json" "dist/Evo/lang/"
-          cp -f "config/maps.json" "dist/Evo/config/"
-          cp -f "config/modes.json" "dist/Evo/config/"
-          cp -f "config/settings.json" "dist/Evo/config/"
+          cp -f "$PROJDIR/lang/en.json" "dist/Evo/lang/"
+          cp -f "$PROJDIR/config/maps.json" "dist/Evo/config/"
+          cp -f "$PROJDIR/config/modes.json" "dist/Evo/config/"
+          cp -f "$PROJDIR/config/settings.json" "dist/Evo/config/"
 
-          echo "Staged files:"
-          find dist -maxdepth 3 -type f -print
+          echo "Staged files:"; find dist -maxdepth 3 -type f -print
 
       - name: Create zip
         run: |

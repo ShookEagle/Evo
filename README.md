@@ -9,9 +9,9 @@ It manages game modes, map groups, and plugin settings serving as the **Event Co
 
 - [X] JSON-based mode, map, and setting loaders
 - [X] O(1) lookup for all services
-- [ ] Panel for EC's via `css_ec`
-- [ ] Persistent Settings
-- [ ] Event Status
+- [x] Panel for EC's via `css_ec`
+- [x] Persistent Settings
+- [x] Event Status
 - [ ] Web API data sync
 
 ---

@@ -29,7 +29,7 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(CI)' == ''">
         <Copy SourceFiles="$(TargetPath)"
               DestinationFolder="D:\cs2-ds\game\csgo\addons\counterstrikesharp\plugins\Evo\" />
         <Copy SourceFiles="$(ProjectDir)lang\en.json"

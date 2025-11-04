@@ -1,0 +1,64 @@
+﻿name: Build & Release Evo
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOTNET_VERSION: "8.0.x"
+      PLUGIN_DLL_NAME: "Evo.dll"
+      ZIP_NAME: "Evo.zip"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build (Release)
+        run: dotnet build -c Release --no-restore
+
+      - name: Stage files for packaging
+        run: |
+          mkdir -p dist/Evo lang config
+          mkdir -p dist/Evo/lang dist/Evo/config
+
+          cp "bin/Release/net8.0/${{ env.PLUGIN_DLL_NAME }}" "dist/Evo/"
+
+          cp -f "lang/en.json" "dist/Evo/lang/"
+          cp -f "config/maps.json" "dist/Evo/config/"
+          cp -f "config/modes.json" "dist/Evo/config/"
+          cp -f "config/settings.json" "dist/Evo/config/"
+
+          echo "Staged files:"
+          find dist -maxdepth 3 -type f -print
+
+      - name: Create zip
+        run: |
+          cd dist
+          zip -r "${{ env.ZIP_NAME }}" "Evo"
+
+      - name: Upload build artifact (for CI runs / debugging)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Evo-zip
+          path: dist/${{ env.ZIP_NAME }}
+
+      - name: Create GitHub Release (on tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/${{ env.ZIP_NAME }}
+          generate_release_notes: true

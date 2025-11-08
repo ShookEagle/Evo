@@ -28,6 +28,7 @@ public class Evo : BasePlugin, IEvo {
   private IMapService? mapService;
   private ISettingService? settingService;
   private IStatusService? statusService;
+  private INoBlockService? noBlockService;
 
 #pragma warning disable CS8766 // Nullability of reference types in return type doesn't match implicitly implemented member (possibly because of nullability attributes).
   public EvoConfig? Config { get; set; }
@@ -42,6 +43,7 @@ public class Evo : BasePlugin, IEvo {
   public IMapService GetMapService() { return mapService!; }
   public ISettingService GetSettingService() { return settingService!; }
   public IStatusService GetStatusService() { return statusService!; }
+  public INoBlockService GetNoBlockService() { return noBlockService!; }
 
   public override void Load(bool hotReload) {
     announcerService = new AnnouncerService(this);
@@ -49,6 +51,7 @@ public class Evo : BasePlugin, IEvo {
     mapService       = new MapService(this);
     settingService   = new SettingService(this);
     statusService    = new StatusService();
+    noBlockService      = new NoBlockService(this);
 
     _ = new CfgExecListeners(this);
     _ = new StatusListeners(this);

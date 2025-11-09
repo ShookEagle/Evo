@@ -17,5 +17,5 @@
   "command_status_event_started": "%prefix%You {green}started {bluegrey}the event.",
   "command_status_event_stopped": "%prefix%You {lightred}stopped {bluegrey}the event.",
   "command_status_printed": "%prefix%Event status printed in console.",
-  "command_noblock_confirm": "%prefix%{0} No-Block."
+  "command_noblock_confirm": "%prefix%{0} {bluegrey}No-Block."
 }

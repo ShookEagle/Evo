@@ -35,7 +35,7 @@ public class NoBlockCmd(IEvo plugin) : Command(plugin) {
     var toggleLabel = setter switch {
       1  => $"{ChatColors.Lime}Enabled",
       -1 => $"{ChatColors.LightRed}Disabled",
-      0  => $"{ChatColors.LightBlue}Toggled",
+      0  => $"{ChatColors.Yellow}Toggled",
       _  => throw new ArgumentOutOfRangeException(nameof(setter))
     };
 

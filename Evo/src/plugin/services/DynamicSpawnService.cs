@@ -6,7 +6,7 @@ using Evo.api.plugin.services;
 
 namespace Evo.plugin.services;
 
-public class DynamicSpawnService(IEvo evo) : IDynamicSpawnService {
+public class DynamicSpawnService() : IDynamicSpawnService {
   private readonly Random rng = new();
   
   // ReSharper disable once InconsistentNaming

@@ -56,7 +56,7 @@ public class Evo : BasePlugin, IEvo {
     settingService      = new SettingService(this);
     statusService       = new StatusService();
     noBlockService      = new NoBlockService();
-    dynamicSpawnService = new DynamicSpawnService(this);
+    dynamicSpawnService = new DynamicSpawnService();
 
     _ = new CfgExecListeners(this);
     _ = new StatusListeners(this);

@@ -14,5 +14,5 @@ public interface IEvo : IPluginConfig<EvoConfig> {
   ISettingService GetSettingService();
   IStatusService GetStatusService();
   INoBlockService GetNoBlockService();
-  IDynamicSpawnService GetPlayerSpawnService();
+  IDynamicSpawnService GetDynamicSpawnService();
 }

@@ -25,14 +25,14 @@ public class DynamicSpawnListeners {
 
     switch (failReason) {
       case JoinTeamReason.TEAMS_FULL:
-        evo.GetPlayerSpawnService().TryCreateSpawn(CsTeam.Terrorist);
-        evo.GetPlayerSpawnService().TryCreateSpawn(CsTeam.CounterTerrorist);
+        evo.GetDynamicSpawnService().TryCreateSpawn(CsTeam.Terrorist);
+        evo.GetDynamicSpawnService().TryCreateSpawn(CsTeam.CounterTerrorist);
         break;
       case JoinTeamReason.TERRORIST_TEAM_FULL:
-        evo.GetPlayerSpawnService().TryCreateSpawn(CsTeam.Terrorist);
+        evo.GetDynamicSpawnService().TryCreateSpawn(CsTeam.Terrorist);
         break;
       case JoinTeamReason.CT_TEAM_FULL:
-        evo.GetPlayerSpawnService().TryCreateSpawn(CsTeam.CounterTerrorist);
+        evo.GetDynamicSpawnService().TryCreateSpawn(CsTeam.CounterTerrorist);
         break;
       case JoinTeamReason.TEAM_LIMIT:
       case JoinTeamReason.CT_TEAM_LIMIT:

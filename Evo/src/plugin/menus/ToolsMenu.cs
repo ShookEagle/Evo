@@ -71,12 +71,12 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
     var toSet = !evo.GetStatusService().Running;
     if (toSet) {
       evo.GetStatusService().Start();
-      evo.GetAnnouncer().Announce(player.PlayerName, "Started", "the Event");
+      evo.GetAnnouncer().Announce(player.PlayerName, "announce_event_started");
       return;
     }
 
     evo.GetStatusService().Stop();
-    evo.GetAnnouncer().Announce(player.PlayerName, "Stopped", "the Event");
+    evo.GetAnnouncer().Announce(player.PlayerName, "announce_event_stopped");
   }
 
   private void handlePrintStatus(CCSPlayerController? player) {

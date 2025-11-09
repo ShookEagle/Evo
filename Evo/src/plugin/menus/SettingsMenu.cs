@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata;
+using CounterStrikeSharp.API.Modules.Utils;
 using Evo.api.plugin;
 using Evo.plugin.menus.models;
 using Evo.plugin.menus.theme;
@@ -35,7 +36,8 @@ public class SettingsMenu : ListMenuBase {
     var value = !evo.GetSettingService().TryGetBool(s);
     if (!evo.GetSettingService().TrySetting(s, value)) return;
     evo.GetAnnouncer()
-     .Announce(Player.PlayerName, $"{(value ? "Enabled" : "Disabled")}",
-        name ?? "ERROR", actionColor: value ? "lime" : "lightred");
+     .Announce(Player.PlayerName, "announce_setting_change",
+        value ? $"{ChatColors.Lime}Enabled" : $"{ChatColors.LightRed}Disabled",
+        name ?? "ERROR");
   }
 }

@@ -27,6 +27,7 @@ public class EStopCmd(IEvo plugin) : Command(plugin) {
     Plugin.GetStatusService().Stop();
     info.ReplyLocalized(Plugin.GetBase().Localizer,
       "command_status_event_stopped");
-    Plugin.GetAnnouncer().Announce(executor.PlayerName, "Stopped", "the Event");
+    Plugin.GetAnnouncer()
+     .Announce(executor.PlayerName, "announce_event_stopped");
   }
 }

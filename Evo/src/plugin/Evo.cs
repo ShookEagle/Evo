@@ -55,6 +55,7 @@ public class Evo : BasePlugin, IEvo {
 
     _ = new CfgExecListeners(this);
     _ = new StatusListeners(this);
+    _ = new NoBlockListener(this);
 
     loadCommands();
   }
@@ -73,6 +74,8 @@ public class Evo : BasePlugin, IEvo {
 
     commands.Add("css_estatus", new EStatusCmd(this));
     commands.Add("css_ecstatus", new EStatusCmd(this));
+    
+    commands.Add("css_noblock", new NoBlockCmd(this));
     
     foreach (var setting in GetSettingService().All)
       commands.Add($"css_{setting.Key}", new SettingCmd(this));

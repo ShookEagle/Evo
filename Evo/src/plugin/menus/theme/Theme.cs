@@ -12,7 +12,7 @@ public static class Theme {
   public static readonly Color
     PLACEHOLDER_TEXT = Color.FromArgb(136, 136, 136); // #888
 
-  public static readonly Color TEXT_DARK = Color.FromArgb(68, 68, 68); // #444
+  public static readonly Color TEXT_DARK = Color.FromArgb(128, 128, 128); 
 
   public static readonly Color
     PRIMARY_BLUE = Color.FromArgb(52, 141, 235); // #3a6ea5

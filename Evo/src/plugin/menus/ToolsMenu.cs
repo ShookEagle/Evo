@@ -1,4 +1,5 @@
 ﻿using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Utils;
 using Evo.api.plugin;
 using Evo.plugin.extensions;
 using Evo.plugin.menus.models;
@@ -12,7 +13,8 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
   override protected void Build() {
     var obValue = evo.GetSettingService().ObtrusiveSettings;
     var running = evo.GetStatusService().Running;
-    
+    var noBlock = evo.GetNoBlockService().IsEnabled;
+
     // Toggle Status Button
     Items.Add(new MenuItem(MenuItemType.Button,
       new MenuValue("Event Status", Theme.TEXT_PRIMARY.ToMenuFormat()),
@@ -20,14 +22,22 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
         running ?
           Theme.ACCENT_GREEN.ToMenuFormat() :
           Theme.ACCENT_RED.ToMenuFormat())));
-    
+
     // Print Status Button
     Items.Add(new MenuItem(MenuItemType.Button,
       new MenuValue("Print Status", Theme.TEXT_PRIMARY.ToMenuFormat())));
-    
+
     // Spacer
     Items.Add(new MenuItem(MenuItemType.Spacer));
-    
+
+    //No-Block
+    Items.Add(new MenuItem(MenuItemType.Button,
+      new MenuValue("No-Block", Theme.TEXT_PRIMARY.ToMenuFormat()),
+      tail: new MenuValue($" [{(noBlock ? "✔" : "✘")}]",
+        noBlock ?
+          Theme.ACCENT_GREEN.ToMenuFormat() :
+          Theme.ACCENT_RED.ToMenuFormat())));
+
     //Obtrusive Settings Button
     Items.Add(new MenuItem(MenuItemType.Button,
       new MenuValue("Obtrusive Settings", Theme.TEXT_PRIMARY.ToMenuFormat()),
@@ -48,6 +58,9 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
         handlePrintStatus(menu.Player);
         break;
       case 3:
+        handleNoBlock(menu.Player);
+        break;
+      case 4:
         handleObtrusiveSelection();
         break;
       default:
@@ -84,5 +97,17 @@ public class ToolsMenu(IEvo evo) : EvoMenuBase("Tools") {
     evo.GetStatusService().PrintStatus(player);
     player.PrintLocalizedChat(evo.GetBase().Localizer,
       "command_status_printed");
+  }
+
+  private void handleNoBlock(CCSPlayerController? player) {
+    if (player == null) return;
+    var toSet = !evo.GetNoBlockService().IsEnabled;
+    if (toSet) { evo.GetNoBlockService().Enable(); } else {
+      evo.GetNoBlockService().Disable();
+    }
+
+    evo.GetAnnouncer()
+     .Announce(player.PlayerName, "announce_noblock_change",
+        toSet ? $"{ChatColors.Lime}Enabled" : $"{ChatColors.LightRed}Disabled");
   }
 }

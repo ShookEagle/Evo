@@ -3,7 +3,7 @@
 namespace Evo.api.plugin.services;
 
 public interface IDynamicSpawnService {
-  bool RespectLimitTeams { get; }
+  bool DynamicSpawns { get; }
   void Enable();
   void Disable();
   void Toggle();

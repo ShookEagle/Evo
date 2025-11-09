@@ -14,11 +14,11 @@ public class DynamicSpawnService(IEvo evo) : IDynamicSpawnService {
   private const string CT_KEY = "info_player_counterterrorist";
   private static readonly Vector ZERO = new Vector(0f, 0f, 0f);
 
-  public bool RespectLimitTeams { get; private set; } = false;
+  public bool DynamicSpawns { get; private set; } = false;
   
-  public void Enable() => RespectLimitTeams = true;
-  public void Disable() => RespectLimitTeams = false;
-  public void Toggle() => RespectLimitTeams = !RespectLimitTeams;
+  public void Enable() => DynamicSpawns = true;
+  public void Disable() => DynamicSpawns = false;
+  public void Toggle() => DynamicSpawns = !DynamicSpawns;
 
   public bool TryCreateSpawn(CsTeam team)
 {

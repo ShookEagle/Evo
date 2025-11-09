@@ -14,7 +14,7 @@ public class DynamicSpawnService(IEvo evo) : IDynamicSpawnService {
   private const string CT_KEY = "info_player_counterterrorist";
   private static readonly Vector ZERO = new Vector(0f, 0f, 0f);
 
-  public bool DynamicSpawns { get; private set; } = false;
+  public bool DynamicSpawns { get; private set; } = true;
   
   public void Enable() => DynamicSpawns = true;
   public void Disable() => DynamicSpawns = false;

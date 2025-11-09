@@ -62,6 +62,7 @@ public class Evo : BasePlugin, IEvo {
     _ = new StatusListeners(this);
     _ = new NoBlockListener(this);
     _ = new DynamicSpawnListeners(this);
+    _ = new FlashingXmlHintFix(this);
 
     loadCommands();
   }

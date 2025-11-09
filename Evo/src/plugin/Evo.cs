@@ -51,7 +51,7 @@ public class Evo : BasePlugin, IEvo {
     mapService       = new MapService(this);
     settingService   = new SettingService(this);
     statusService    = new StatusService();
-    noBlockService      = new NoBlockService(this);
+    noBlockService      = new NoBlockService();
 
     _ = new CfgExecListeners(this);
     _ = new StatusListeners(this);

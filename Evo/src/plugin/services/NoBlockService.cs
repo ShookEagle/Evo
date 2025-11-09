@@ -8,7 +8,7 @@ using Evo.plugin.extensions;
 
 namespace Evo.plugin.services;
 
-public sealed class NoBlockService(IEvo evo) : INoBlockService {
+public sealed class NoBlockService : INoBlockService {
   public bool IsEnabled { get; private set; } = true;
   public void Enable() => IsEnabled = true;
   public void Disable() => IsEnabled = false;

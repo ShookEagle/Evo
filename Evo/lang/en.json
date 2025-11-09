@@ -4,10 +4,20 @@
   "error_try_again": "%prefix%{darkred}Error: {lightred}{0}. {grey}Please try again, {white}if the problem persists{grey}, contact ShookEagle.",
   "no_permission": "%prefix%{red}This requires the {white}{0}{red} {1}.",
   "usage": "%prefix%Usage: {green}{0}",
-  "admin_action_format": "%prefix%{blue}{0} {bluegrey}{1} {2}{3} {bluegrey}{4}.",
+  "announcement_base": "%prefix%{blue}{0} {bluegrey}{1}",
+  "announce_mode_change": "Changed the mode to {lightpurple}{0}{bluegrey}.",
+  "announce_map_change": "Changed the map to {yellow}{0}{bluegrey}. Changing in 3s.",
+  "announce_setting_change": "{0} {bluegrey}{1}",
+  "announce_server_reset": "{lightred}Reset {bluegrey}the server.",
+  "announce_event_started": "{lime}Started {bluegrey}the Event.",
+  "announce_event_stopped": "{lightred}Stopped {bluegrey}the Event.",
+  "announce_noblock_change": "{0} {bluegrey}No-Block.",
+  "announce_dynamic_spawns_change": "{0} {bluegrey}Dynamic Spawns.",
   "command_status_err_not_started": "%prefix%{red}No event started.",
   "command_status_err_event_started": "%prefix%{red}Event status already started.",
   "command_status_event_started": "%prefix%You {green}started {bluegrey}the event.",
   "command_status_event_stopped": "%prefix%You {lightred}stopped {bluegrey}the event.",
-  "command_status_printed": "%prefix%Event status printed in console."
+  "command_status_printed": "%prefix%Event status printed in console.",
+  "command_noblock_confirm": "%prefix%{0} {bluegrey}No-Block.",
+  "command_dynamic_spawns_confirm": "%prefix%{0} {bluegrey}Dynamic Spawns."
 }

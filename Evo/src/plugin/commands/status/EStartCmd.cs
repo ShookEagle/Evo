@@ -27,6 +27,7 @@ public class EStartCmd(IEvo evo) : Command(evo) {
     Plugin.GetStatusService().Start();
     info.ReplyLocalized(Plugin.GetBase().Localizer,
       "command_status_event_started");
-    Plugin.GetAnnouncer().Announce(executor.PlayerName, "Started", "the Event");
+    Plugin.GetAnnouncer()
+     .Announce(executor.PlayerName, "announce_event_started");
   }
 }

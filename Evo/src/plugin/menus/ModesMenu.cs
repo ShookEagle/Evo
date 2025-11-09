@@ -1,4 +1,5 @@
-﻿using Evo.api.plugin;
+﻿using CounterStrikeSharp.API.Modules.Utils;
+using Evo.api.plugin;
 using Evo.plugin.menus.models;
 using RMenu;
 
@@ -18,7 +19,6 @@ public class ModesMenu : ListMenuBase {
     if (data is not string s) return;
     if (evo.GetModeService().TrySetMode(s))
       evo.GetAnnouncer()
-       .Announce(Player.PlayerName, "Changed the mode to", name ?? "ERROR",
-          actionColor: "lightpurple");
+       .Announce(Player.PlayerName, "announce_mode_change", name ?? "ERROR");
   }
 }

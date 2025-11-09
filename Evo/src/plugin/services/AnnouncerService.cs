@@ -7,13 +7,12 @@ using MAULActainShared.maul.enums;
 namespace Evo.plugin.services;
 
 public class AnnouncerService(IEvo evo) : IAnnouncerService {
-  public void Announce(string admin, string action, string value,
-    string suffix = "", string valueColor = "bluegrey") {
-    foreach (var player in
-      Utilities.GetPlayers().Where(player => player.IsReal())) {
-      player.PrintLocalizedChat(evo.GetBase().Localizer, "admin_action_format",
-        player.GetRank() >= MaulPermission.EG ? admin : "EC", action,
-        "{" + valueColor + "}", value, suffix);
+
+  public void Announce(string admin, string local, params object[] args) {
+    var message = evo.GetBase().Localizer[local, args];
+    foreach (var player in Utilities.GetPlayers()) {
+      player.PrintLocalizedChat(evo.GetBase().Localizer, "announcement_base",
+        player.GetRank() >= MaulPermission.EG ? admin : "EC", message);
     }
   }
 }

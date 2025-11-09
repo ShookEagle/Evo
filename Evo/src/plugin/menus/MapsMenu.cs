@@ -1,5 +1,6 @@
 ﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Modules.Timers;
+using CounterStrikeSharp.API.Modules.Utils;
 using Evo.api.plugin;
 using Evo.plugin.menus.models;
 
@@ -16,8 +17,7 @@ public class MapsMenu : ListMenuBase {
   override protected void OnSelected(object? data, string? name) {
     if (data is not string s) return;
     evo.GetAnnouncer()
-     .Announce(Player.PlayerName, "Changed the map to", name ?? "ERROR",
-        "Changing in 3s", "yellow");
+     .Announce(Player.PlayerName, "announce_map_change", name ?? "ERROR");
     evo.GetBase()
      .AddTimer(3f,
         () => {

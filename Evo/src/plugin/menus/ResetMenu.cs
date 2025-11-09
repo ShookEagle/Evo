@@ -1,5 +1,6 @@
 ﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Utils;
 using Evo.api.plugin;
 using Evo.plugin.extensions;
 using Evo.plugin.menus.models;
@@ -28,7 +29,8 @@ public class ResetMenu(IEvo evo) : EvoMenuBase("Reset Server?") {
       case 2:
         resetServer(menu.Player);
         break;
-      default: menu.Player.PrintLocalizedChat(evo.GetBase().Localizer,
+      default:
+        menu.Player.PrintLocalizedChat(evo.GetBase().Localizer,
           "error_try_again", "Invalid Menu Operation");
         break;
     }
@@ -39,9 +41,7 @@ public class ResetMenu(IEvo evo) : EvoMenuBase("Reset Server?") {
     Server.ExecuteCommand("exec utils/unload_plugins.cfg");
     Server.ExecuteCommand("exec utils/server_default.cfg");
 
-    evo.GetAnnouncer()
-     .Announce(player.PlayerName, string.Empty, "Reset", "the server",
-        "lightred");
+    evo.GetAnnouncer().Announce(player.PlayerName, "announce_server_reset");
 
     evo.GetBase()
      .AddTimer(3f, () => { Server.ExecuteCommand("changelevel de_dust2"); });

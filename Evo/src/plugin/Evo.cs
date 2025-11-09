@@ -28,11 +28,13 @@ public class Evo : BasePlugin, IEvo {
   private IMapService? mapService;
   private ISettingService? settingService;
   private IStatusService? statusService;
+  private INoBlockService? noBlockService;
+  private IDynamicSpawnService? dynamicSpawnService;
 
 #pragma warning disable CS8766 // Nullability of reference types in return type doesn't match implicitly implemented member (possibly because of nullability attributes).
   public EvoConfig? Config { get; set; }
 #pragma warning restore CS8766 // Nullability of reference types in return type doesn't match implicitly implemented member (possibly because of nullability attributes).
-  
+
   public void OnConfigParsed(EvoConfig? config) { Config = config; }
 
   public BasePlugin GetBase() { return this; }
@@ -42,27 +44,36 @@ public class Evo : BasePlugin, IEvo {
   public IMapService GetMapService() { return mapService!; }
   public ISettingService GetSettingService() { return settingService!; }
   public IStatusService GetStatusService() { return statusService!; }
+  public INoBlockService GetNoBlockService() { return noBlockService!; }
+  public IDynamicSpawnService GetDynamicSpawnService() {
+    return dynamicSpawnService!;
+  }
 
   public override void Load(bool hotReload) {
-    announcerService = new AnnouncerService(this);
-    modeService      = new ModeService(this);
-    mapService       = new MapService(this);
-    settingService   = new SettingService(this);
-    statusService    = new StatusService();
+    announcerService    = new AnnouncerService(this);
+    modeService         = new ModeService(this);
+    mapService          = new MapService(this);
+    settingService      = new SettingService(this);
+    statusService       = new StatusService();
+    noBlockService      = new NoBlockService();
+    dynamicSpawnService = new DynamicSpawnService();
 
     _ = new CfgExecListeners(this);
     _ = new StatusListeners(this);
+    _ = new NoBlockListener(this);
+    _ = new DynamicSpawnListeners(this);
+    _ = new FlashingXmlHintFix(this);
 
     loadCommands();
   }
 
   private void loadCommands() {
     commands.Add("css_ec", new EcCmd(this));
-    
+
     commands.Add("css_estart", new EStartCmd(this));
     commands.Add("css_startevent", new EStartCmd(this));
     commands.Add("css_eventstart", new EStartCmd(this));
-    
+
     commands.Add("css_estop", new EStopCmd(this));
     commands.Add("css_stopevent", new EStopCmd(this));
     commands.Add("css_endevent", new EStopCmd(this));
@@ -70,7 +81,11 @@ public class Evo : BasePlugin, IEvo {
 
     commands.Add("css_estatus", new EStatusCmd(this));
     commands.Add("css_ecstatus", new EStatusCmd(this));
-    
+
+    commands.Add("css_noblock", new NoBlockCmd(this));
+    commands.Add("css_dynamicspawns", new DynamicSpawnCmd(this));
+    commands.Add("css_dspawns", new DynamicSpawnCmd(this));
+
     foreach (var setting in GetSettingService().All)
       commands.Add($"css_{setting.Key}", new SettingCmd(this));
 

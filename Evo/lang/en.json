@@ -12,10 +12,12 @@
   "announce_event_started": "{lime}Started {bluegrey}the Event.",
   "announce_event_stopped": "{lightred}Stopped {bluegrey}the Event.",
   "announce_noblock_change": "{0} {bluegrey}No-Block.",
+  "announce_dynamic_spawns_change": "{0} {bluegrey}Dynamic Spawns.",
   "command_status_err_not_started": "%prefix%{red}No event started.",
   "command_status_err_event_started": "%prefix%{red}Event status already started.",
   "command_status_event_started": "%prefix%You {green}started {bluegrey}the event.",
   "command_status_event_stopped": "%prefix%You {lightred}stopped {bluegrey}the event.",
   "command_status_printed": "%prefix%Event status printed in console.",
-  "command_noblock_confirm": "%prefix%{0} {bluegrey}No-Block."
+  "command_noblock_confirm": "%prefix%{0} {bluegrey}No-Block.",
+  "command_dynamic_spawns_confirm": "%prefix%{0} {bluegrey}Dynamic Spawns."
 }

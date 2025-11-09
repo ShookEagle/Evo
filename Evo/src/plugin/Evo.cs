@@ -82,6 +82,8 @@ public class Evo : BasePlugin, IEvo {
     commands.Add("css_ecstatus", new EStatusCmd(this));
 
     commands.Add("css_noblock", new NoBlockCmd(this));
+    commands.Add("css_dynamicspawns", new DynamicSpawnCmd(this));
+    commands.Add("css_dspawns", new DynamicSpawnCmd(this));
 
     foreach (var setting in GetSettingService().All)
       commands.Add($"css_{setting.Key}", new SettingCmd(this));

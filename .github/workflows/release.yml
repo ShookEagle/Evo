@@ -43,7 +43,7 @@ jobs:
           CSPROJ="$(git ls-files '*.csproj' | head -n1)"
           PROJDIR="$(dirname "$CSPROJ")"
 
-          mkdir -p dist/plugins/Evo/lang dist/plugins/Evo/config dist/shared/Rmenu
+          mkdir -p dist/plugins/Evo/lang dist/plugins/Evo/config dist/shared/RMenu
 
           cp "out/Evo.dll" "dist/plugins/Evo/"
 

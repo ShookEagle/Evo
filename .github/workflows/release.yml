@@ -43,14 +43,15 @@ jobs:
           CSPROJ="$(git ls-files '*.csproj' | head -n1)"
           PROJDIR="$(dirname "$CSPROJ")"
 
-          mkdir -p dist/Evo/lang dist/Evo/config
+          mkdir -p dist/plugins/Evo/lang dist/plugins/Evo/config dist/shared/Rmenu
 
-          cp "out/Evo.dll" "dist/Evo/"
+          cp "out/Evo.dll" "dist/plugins/Evo/"
 
-          cp -f "$PROJDIR/lang/en.json" "dist/Evo/lang/"
-          cp -f "$PROJDIR/config/maps.json" "dist/Evo/config/"
-          cp -f "$PROJDIR/config/modes.json" "dist/Evo/config/"
-          cp -f "$PROJDIR/config/settings.json" "dist/Evo/config/"
+          cp -f "$PROJDIR/lang/en.json" "dist/plugins/Evo/lang/"
+          cp -f "$PROJDIR/config/maps.json" "dist/plugins/Evo/config/"
+          cp -f "$PROJDIR/config/modes.json" "dist/plugins/Evo/config/"
+          cp -f "$PROJDIR/config/settings.json" "dist/plugins/Evo/config/"
+          cp -f "$PROJDIR/shared/RMenu.dll" "dist/shared/RMenu/"
 
           echo "Staged files:"; find dist -maxdepth 3 -type f -print
 

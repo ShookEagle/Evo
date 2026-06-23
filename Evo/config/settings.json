@@ -4,5 +4,6 @@
   "bots":             { "name": "Bots",               "stem": "bots",             "default": false },
   "buying":           { "name": "Buy Menu",           "stem": "buying",           "default": true },
   "movementunlocker": { "name": "Movement Unlocker",  "stem": "movementunlocker", "default": false },
-  "weapondropping":   { "name": "Weapon Dropping",    "stem": "weapondropping",   "default": true }
+  "weapondropping":   { "name": "Weapon Dropping",    "stem": "weapondropping",   "default": true },
+  "osvsnos":          { "name": "O's vs NO's",         "stem": "osvsnos",          "default": false }  
 }
